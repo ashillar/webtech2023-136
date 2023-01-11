@@ -20,13 +20,6 @@ table {
 	border-collapse: collapse;
 }
 
-div.gallery-left {
-	margin: 5px;
-  	border: 1px solid #ccc;
-  	float: left;
-  	width: 540px;
-}
-
 author {
 	float: right;
 }
