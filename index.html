@@ -1,47 +1,135 @@
 <!DOCTYPE html>
-
-<!--TODO: 
-add elements:
-    - nav, h2, ul, ol, dl, td, figure, figcaption, pre, abbr, input
-
--->
-
-<html lang="en">
-
-    <head> 
-    	<link rel="stylesheet" href="style.css">
-        <meta charset="UTF-8">
-        <title>Photo Album page</title>
-    </head>
-
-    <body> 
-        
-        <h1 id="title"><u><em>Photo Album</em></u></h1>
-
-        <br>
-
-        <table> 
-
-            <caption>The photo album list</caption>
-            <tr>
-                <th><img href="target" alt="photo 1"></th>
-                <th>Learn more about <a href="target" target="_blank">author_name</a></th>
-                <th>concise description of the image</th>
-                <th>tags with image</th>
-                <th><p>description</p></th>
-            </tr>
-
-            <tr> 
-                <th><img href="target" alt="image 2"></th>
-                <th>Text 2........</th>
-            </tr>
-
-        </table>
-
-
-        <section id="end">
-            <author>Boris & Ashilla</author>
-        </section>
-    </body>
-
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Author</title>
+    <link rel="stylesheet" href="stylesheet.css">
+  </head>
+<!-- Header Content -->
+<header>
+    <h1 class="logo">Penfist</h1>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle">
+    <!-- Navigation Bar-->
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Gallery</a></li>
+      </ul>
+    </nav>
+    <label for="nav-toggle" class="nav-toggle-label">
+      <span></span>
+    </label>
+</header>
+<!-- Top Content Section-->
+<div class="top-wrapper">
+    <div class="container">
+      <h1>FAMOUS AUTHOR GALLERY</h1>
+      <pre>Web service where you can learn about famous authors in the worlds. </pre>
+      <div class="btn-wrapper">
+        <a href="#" class="btn explore">Explore</a>
+      </div>
+    </div>
+</div>
+<!-- Small Introduction Section-->
+<div class="contents-wrapper">
+    <div class="container">
+        <div class="heading"> <h2>Introduction</h2> </div> 
+        <div class="grid-container">
+            <div class="grid-item">
+                <dl>
+                    <dt>What is Penfist?</dt>
+                    <dd>Penfist is a web service that contains brief information famous authors in the worlds.</dd>
+                    <dd>We gather information from several websites. You can visit this website to see more details on more authors:  <a id="examplelink" href="https://en.wikipedia.org/wiki/List_of_best-selling_fiction_authors">authorssources.com</a></dd>
+                    <dt>What can you learn from us?</dt>
+                    <dd>You can learn about the authors' details:
+                      <ul class="list">
+                        <li>Career</li>
+                        <li>Works</li>
+                        <li>Personal Information</li>
+                      </ul>
+                    </dd>
+                </dl>
+                <strong> Let's Learn Together</strong>
+            </div>
+            <div class="grid-item">
+                <figure>
+                    <img src="https://www.freepnglogos.com/uploads/lamp/lamp-logo-idea-creativity-svg-png-icon-download-2.png">
+                    <figcaption> figure1: Icon lamp</figcaption>
+                </figure>
+            </div>
+          </div>
+    </div>
+</div>
+<!-- Gallery Section-->
+<div class="contents-wrapper">
+  <div class="container">
+    <div class="heading"> <h2>Gallery</h2></div>  
+    <!-- Table Section-->
+    <table>
+        <caption>The photo album list</caption>
+        <thead>
+          <tr>
+            <th scope="col">Author Image</th>
+            <th scope="col">Author Name</th>
+            <th scope="col">Alt</th>
+            <th scope="col">Tag</th>
+            <th scope="col">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Author Image"> <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/Agatha_Christie.png">
+            </td>
+            <td data-label="Author Name">Agatha Christie </td>
+            <td data-label="Alt">Image of Agatha Christie</td>
+            <td data-label="Tag">english, successful_write</td>
+            <td data-label="Description"> Agatha Christie, <abbr title="Dame (Commander of the Order) of the British Empire">DBE</abbr> was an English writer who got appointed as the most-translated individual author</td>
+          </tr>
+          <tr>
+            <td data-label="Author Image"> <img src="https://upload.wikimedia.org/wikipedia/commons/2/2d/Georges_Simenon_%281963%29_without_hat_by_Erling_Mandelmann.jpg">
+            </td>
+            <td data-label="Author Name">Georges Simenon
+       </td>
+            <td data-label="Alt">Image of Georges Simenon </td>
+            <td data-label="Tag">belgian, novelist</td>
+            <td data-label="Description"> Georges Simenon was a Belgian writer. He was one of the most prolific writers of the 20th century.</td>
+          </tr>
+           <tr>
+            <td data-label="Author Image"> <img src="https://i.guim.co.uk/img/media/bdc6ac3f394d3bc3ad10bd0f962f05ef9aff5604/340_736_4848_2911/master/4848.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=859576637389094a07e9334623c439d0">
+            </td>
+            <td data-label="Author Name">Stephen Edwin King </td>
+            <td data-label="Alt">Image of Stephen Edwin King </td>
+            <td data-label="Tag"> author, king_of_horror</td>
+            <td data-label="Description"> Stephen Edwin King is an American author who is described as the "King of Horror". He received several awards for his contribution to literature. </td>
+          </tr>
+        <tr>
+            <td data-label="Author Image"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTipMe_0qc2jfurOvbobrCLT6GFnnSrXnQegq7d-yN-y3pfQoyK-EokUg&s">
+            </td>
+            <td data-label="Author Name">Robert Lawrence Stine  </td>
+            <td data-label="Alt">Image of Robert Lawrence Stine </td>
+            <td data-label="Tag"> american_novelist</td>
+            <td data-label="Description"> Robert Lawrence Stine is an American novelist. He is referred as  the "Stephen King of children's literature" and wrote many horror ficton novels. Many of his works became bestseller lists and he has received several awards.</td>
+          </tr>
+        <tr>
+            <td>
+                <form action="https://wt.ops.labs.vu.nl/api23/1d6a86bc" method="post">
+                    <label for="authorimage">Author Image URL:</label>
+                    <input type="text" id="authorimage" name="authorimage" required><br><br>
+                    <input type="submit" value="Submit" >
+                  </form>
+                  
+            </td>
+        </tr>  
+        </tbody>
+      </table>
+</div>
+</div>
+<!-- Footer-->
+<footer>
+    <div class="footer_container">
+      <div class="logo"> <h2>Logo </h2></div>
+        <p id="owner">Boris & Ashilla</p>
+      </div>
+</footer> 
+</body>
 </html>
