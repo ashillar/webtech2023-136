@@ -64,7 +64,6 @@ table, td, th {
 	border: 1px solid;
 	background-color: lightgoldenrodyellow;
 	text-align: center;
-	padding: 10px;
 
 }
 
@@ -107,22 +106,21 @@ author {
 p.a {
   font-family: "Times New Roman", Times, serif;
 }
-
 p.ab {
 	font-family: "Times New Roman", Times, serif;
 
 }
 
+/* Responsivity */
 /*Big smartphones [426px -> 600px]*/
 @media only screen and (max-width: 600px) {
 
-    table {
+table {
       border: 0;
     }
   
 table caption {
 		font-size: 18px;
-		margin: 10px;
 	    }
     
     table th {
@@ -171,25 +169,34 @@ table caption {
 		font-size: 12px;
 	}
 	
-
 	nav {
 		display: inline-block;
 		text-align: center;
 		margin: 0 auto;
-
 	}
 }
 
-@media only screen and (max-width: 1200px){
-    /*Tablets [601px -> 1200px]*/
+@media only screen and (min-width: 600px){
+	table caption {
+		font-size: 35px;
+	}
+	
+	table th {
+		font-size: 30px;
+	}
+
+	table tr{
+		align-items: center;
+	}
+
 
 }
 
 @media only screen and (max-width: 425px){
 	/*Small smartphones [325px -> 425px]*/
 	table caption {
-		margin: 10px;
-		}
+		margin: 5px;
+	}
 
 	hr {
 		display: block;
@@ -201,6 +208,7 @@ table caption {
 
 }
 
+
 /* Print screen */
 @media print {
     h1 {page-break-before: always;}
@@ -209,6 +217,4 @@ table caption {
         orphans:inherit;
         widows:unset;
       }
-
-
 }
