@@ -30,10 +30,6 @@ a.home {
 	float: right;
 }
 
-p {
-	
-}
-
 li.nav {
   float: left;
 }
@@ -44,6 +40,7 @@ li.nav a {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+  font-size: 20px;
 }
 
 li.nav a:hover {
@@ -67,10 +64,11 @@ table, td, th {
 	border: 1px solid;
 	background-color: lightgoldenrodyellow;
 	text-align: center;
+	padding: 10px;
+
 }
 
 table {
-	width: 100vw;
 	border-collapse: collapse;
 }
 
@@ -115,3 +113,102 @@ p.ab {
 
 }
 
+/*Big smartphones [426px -> 600px]*/
+@media only screen and (max-width: 600px) {
+
+    table {
+      border: 0;
+    }
+  
+table caption {
+		font-size: 18px;
+		margin: 10px;
+	    }
+    
+    table th {
+      border: none;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+
+    }
+    
+    table tr {
+      border-bottom: 3px solid #ddd;
+      display: block;
+      margin-bottom: .625em;
+    }
+    
+    table td {
+      border-bottom: 1px solid #ddd;
+      display: block;
+      font-size: .8em;
+      text-align: right;
+    }
+
+    
+    table td::before {
+      content: attr(data-label);
+      float: left;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    
+    table td:last-child {
+      border-bottom: 0;
+    }
+
+	hr {
+		display: block;
+		font-size:12px ;
+	}
+
+	p{
+		font-size: 12px;
+	}
+	
+
+	nav {
+		display: inline-block;
+		text-align: center;
+		margin: 0 auto;
+
+	}
+}
+
+@media only screen and (max-width: 1200px){
+    /*Tablets [601px -> 1200px]*/
+
+}
+
+@media only screen and (max-width: 425px){
+	/*Small smartphones [325px -> 425px]*/
+	table caption {
+		margin: 10px;
+		}
+
+	hr {
+		display: block;
+	}
+
+	li.nav {
+		float: center;
+	}
+
+}
+
+/* Print screen */
+@media print {
+    h1 {page-break-before: always;}
+    footer {page-break-after: always;}
+    p {
+        orphans:inherit;
+        widows:unset;
+      }
+
+
+}
