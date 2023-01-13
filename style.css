@@ -5,6 +5,17 @@ h1 {
 	text-align: center;
 	width: 100vw;
 	height: 2vw;
+	color: white;
+}
+
+h2 {
+	font-size: 190%;
+}
+
+p {
+	color: white;
+	font-size: 130%;
+	font-family: Arial;
 }
 
 body {
@@ -16,17 +27,18 @@ body {
 a.home {
 	font-size: 140%;
 	color: lightblue;
+	float: right;
 }
 
 p {
 	
 }
 
-li {
+li.nav {
   float: left;
 }
 
-li a {
+li.nav a {
   display: block;
   color: white;
   text-align: center;
@@ -34,7 +46,7 @@ li a {
   text-decoration: none;
 }
 
-li a:hover {
+li.nav a:hover {
   background-color: #111;
 }
 
@@ -43,6 +55,11 @@ li a:hover {
 }
 li {
 	display: inline;
+}
+
+li.George {
+	display: none;
+	float: none;
 }
 
 
