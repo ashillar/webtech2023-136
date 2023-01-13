@@ -21,10 +21,10 @@
 
         <nav>
             <ul>
-              <li><a href="#home">Home</a></li>
-              <li><a href="#news">News</a></li>
-              <li><a href="#contact">Contact Us</a></li>
-              <li><a href="#about">About</a></li>
+              <li class="nav"><a href="#home">Home</a></li>
+              <li class="nav"><a href="#news">News</a></li>
+              <li class="nav"><a href="#contact">Contact Us</a></li>
+              <li class="nav"><a href="#about">About</a></li>
             </ul>
         </nav>
 
@@ -42,7 +42,12 @@
             </tr>
 
             <tr>
-                <td data-label="Author Image"> <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/Agatha_Christie.png"></td>
+                <td data-label="Author Image"> 
+                    <figure>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/Agatha_Christie.png">
+                        <figcaption> Fig.1 - Agatha Christie</figcaption>
+                    </figure>
+                </td>
                 <td data-label="Author Name">Agatha Christie </td>
                 <td data-label="Alt">Image of Agatha Christie</td>
                 <td data-label="Tag">english, successful_write</td>
@@ -50,21 +55,45 @@
             </tr>
 
             <tr> 
-                <td data-label="Author Image"> <img src="https://upload.wikimedia.org/wikipedia/commons/2/2d/Georges_Simenon_%281963%29_without_hat_by_Erling_Mandelmann.jpg"></td>
+                <td data-label="Author Image"> 
+                    <figure>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2d/Georges_Simenon_%281963%29_without_hat_by_Erling_Mandelmann.jpg">
+                        <figcaption>Fig.2 - Erling Mandelmann</figcaption>
+                    </figure>
+                </td>
                 <td data-label="Author Name">Georges Simenon</td>
                 <td data-label="Alt">Image of Georges Simenon </td>
                 <td data-label="Tag">belgian, novelist</td>
-                <td data-label="Description"> Georges Simenon was a Belgian writer. He was one of the most prolific writers of the 20th century.</td>
+                <td data-label="Description"> Georges Simenon was a Belgian writer. He was one of the most prolific writers of the 20th century.
+                Simenon wrote over 200 books over the years:
+                <ol>
+                    <li>1923</li>
+                    <li>1924</li>
+                    <li>1925</li>
+                    <li>...</li>
+                    <li>1933</li>
+                </ol>
+                </td>
             </tr>
             <tr>
-                <td data-label="Author Image"> <img src="https://i.guim.co.uk/img/media/bdc6ac3f394d3bc3ad10bd0f962f05ef9aff5604/340_736_4848_2911/master/4848.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=859576637389094a07e9334623c439d0"></td>
+                <td data-label="Author Image"> 
+                    <figure>
+                        <img src="https://i.guim.co.uk/img/media/bdc6ac3f394d3bc3ad10bd0f962f05ef9aff5604/340_736_4848_2911/master/4848.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=859576637389094a07e9334623c439d0">
+                        <figcaption>Fig.3 - Stephen Edwin King</figcaption>
+                    </figure>
+                </td>
                 <td data-label="Author Name">Stephen Edwin King </td>
                 <td data-label="Alt">Image of Stephen Edwin King </td>
                 <td data-label="Tag"> author, king_of_horror</td>
                 <td data-label="Description"> Stephen Edwin King is an American author who is described as the "King of Horror". He received several awards for his contribution to literature. </td>
             </tr>
             <tr>
-                <td data-label="Author Image"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTipMe_0qc2jfurOvbobrCLT6GFnnSrXnQegq7d-yN-y3pfQoyK-EokUg&s"></td>
+                <td data-label="Author Image"> 
+                    <figure>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTipMe_0qc2jfurOvbobrCLT6GFnnSrXnQegq7d-yN-y3pfQoyK-EokUg&s">
+                        <figcaption>Fig.4 - Rober Lawrence Stine</figcaption>
+                    </figure>
+                </td>
                 <td data-label="Author Name">Robert Lawrence Stine  </td>
                 <td data-label="Alt">Image of Robert Lawrence Stine </td>
                 <td data-label="Tag"> american_novelist</td>
@@ -100,6 +129,8 @@
 
         <h2 id="about">About</h2>
 
+        <!--add a figure with figcaption. If you have any ideas (idea figure lamp) -->
+
         <p>Lorem ipsum dolor sit amet. Qui earum exercitationem non omnis dicta est harum ipsum sed nemo culpa. In minima pariatur ut impedit unde ut dolorum unde quo voluptates quasi rem consequatur unde sit magnam repellendus sed nisi inventore! Sit tempore architecto in rerum molestias ut nihil molestiae et facere maxime qui repellat explicabo?
 
         Qui temporibus sapiente nam velit ipsam in nisi quasi sed voluptas numquam. Et recusandae eveniet a necessitatibus totam aut doloribus saepe et dolor cupiditate eos vitae provident cum error blanditiis. Sed exercitationem neque qui dolore doloremque est magni nisi sit galisum galisum. Id animi voluptates ea ratione accusamus et ipsam voluptatem ut ipsa Quis id corrupti iste?
@@ -111,10 +142,12 @@
         <h2 id="contact">Contact us</h2>
         <p> Boris de Groot and Ashilla Fryda have made this web page. </p>
 
+
+
         <a class="home" href="#home">Homepage</a>
 
         <footer>
-            <p class="b">I tested the responsiveness of the web page by using devtools on chrome. With it I could open a page where I could slide the screen size to see the web page on different screen.
+            <p class="b">I tested the responsiveness of the web page by using devtools on chrome. With it I could open a page where I could slide the screen size to see the web page on different screen. I tested different browsers by opening the index.html file with different browsers including chrome and internet explorer. 
             <author>Authors: 
                 Boris & Ashilla
             </author>
