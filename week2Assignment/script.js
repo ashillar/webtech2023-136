@@ -67,19 +67,20 @@ form.addEventListener('submit', async function(event) {
         return;
     }
 
-    // Create a FormData object to store the form data
-    var formData = new FormData();
-    formData.append('imageUrl' + countNum, image);
-    formData.append('author' + countNum, author);
-    formData.append('alt' + countNum, alt);
-    formData.append('tags' + countNum, tags);
-    formData.append('description' + countNum, description);
-    
+    // Create a JSON object to store the form data
+    var formData = {
+        imageUrl: image,
+        author: author,
+        alt: alt,
+        tags: tags,
+        description: description,
+    }
 
     // Send the request
     fetch('https://wt.ops.labs.vu.nl/api23/1d6a86bc', {
         method: 'POST',
-        body: formData,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
     })
     .then(response => response.text())
     .then(data => {
@@ -90,6 +91,7 @@ form.addEventListener('submit', async function(event) {
         console.error(error);
     });
 });
+
 
 
 
