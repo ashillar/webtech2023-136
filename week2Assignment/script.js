@@ -1,26 +1,26 @@
+//-------------------------------- Functions -----------------------------------
+//The function should have the link and more data
+function addRow(link, author, alt, tags, description) {
 
-// -------------------------- Functions ---------------------------------------
+    let aRow = document.createElement("tr");
 
+    let tableDataOne = document.createElement("td");
+    tableDataOne.innerHTML = "<img src='" + link + "'>";
 
-// Data supposed to be in the FormData object which is made when data is posted to the api
+    aRow.appendChild(tableDataOne);
 
-//The function should have the link and maybe more data
-function addRow(link) {
+    let tableDataTwo = document.createElement("td");
+    tableDataTwo.innerHTML = "<p>Author: " + author + "</p>" + "<p>Alt: " + alt + "</p>" + "<p>Tags: " + tags + "</p>" + "<p>Description: " + description + "</p>";
 
-	let aRow = document.createElement("tr");
+    aRow.appendChild(tableDataTwo);
 
-	let tableDataOne = document.createElement("td");
-	tableDataOne.innerHTML = "<img src='" + link + "'>";
-
-	aRow.appendChild(tableDataOne);
-	//let tableDataTwo = document.createElement("td");
-
-	let gal = document.getElementById("Gallery");
-	gal.appendChild(aRow);
+    let gal = document.getElementById("Gallery");
+    gal.appendChild(aRow);
 }
 
 
-//-------------------Posting the data----------------- 
+
+//-------------------Posting the data-----------------
 
 let countNum = 0;
 
@@ -29,17 +29,43 @@ let form = document.getElementById('form');
 
 
 // Add an event listener to the form to handle the submission
-form.addEventListener('submit', function(event) {
+form.addEventListener('submit', async function(event) {
     event.preventDefault();
 
     countNum += 1;
-
+    
     // Get the textarea values from the submit button
-    let image = document.querySelector('textarea[name="image"]').value;
-    let author = document.querySelector('textarea[name="author"]').value;
-    let alt = document.querySelector('textarea[name="alt"]').value;
-    let tags = document.querySelector('textarea[name="tags"]').value;
+    let image = document.querySelector('input[name="image"]').value;
+    let author = document.querySelector('input[name="author"]').value;
+    let alt = document.querySelector('input[name="alt"]').value;
+    let tags = document.querySelector('input[name="tags"]').value;
     let description = document.querySelector('textarea[name="description"]').value;
+
+    // Validate the data before sending the request
+    if (!image) {
+        alert("Image is required");
+        return;
+    }
+
+    if (!author) {
+        alert("Author is required");
+        return;
+    }
+
+    if (!alt) {
+        alert("Alt is required");
+        return;
+    }
+
+    if (!tags) {
+        alert("Tags is required");
+        return;
+    }
+
+    if (!description) {
+        alert("Description is required");
+        return;
+    }
 
     // Create a FormData object to store the form data
     var formData = new FormData();
@@ -50,30 +76,22 @@ form.addEventListener('submit', function(event) {
     formData.append('description' + countNum, description);
     
 
-    console.log(" formData is: " + formData);
-    
     // Send the request
     fetch('https://wt.ops.labs.vu.nl/api23/1d6a86bc', {
         method: 'POST',
-        body: formData
+        body: formData,
     })
-    .then(response => {
-    	if (response.status === 200){
-    		return response.text();
-    	} else{
-    		throw new Error("Request failed: " + response.status);
-    	}
-    })
-
+    .then(response => response.text())
     .then(data => {
         console.log(data);
-        addRow(data.image); //Add name, alt, tags ...
+        addRow(image, author, alt, tags, description); 
     })
-
     .catch(error => {
         console.error(error);
     });
 });
+
+
 
 
 
