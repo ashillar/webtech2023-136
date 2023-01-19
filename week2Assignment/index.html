@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head> 
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js" async></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Photo Album page</title>
+    </head>
+
+    <body> 
+        
+        <h1 id="home"><u><em>Photo Album</em></u></h1>
+
+        <!--inline nav block -->
+
+        <br>
+        <br>
+        <br>
+
+        <nav>
+            <ul>
+              <li class="nav"><a href="#home">Home</a></li>
+              <li class="nav"><a href="#news">News</a></li>
+              <li class="nav"><a href="#contact">Contact Us</a></li>
+              <li class="nav"><a href="#about">About</a></li>
+            </ul>
+        </nav>
+
+        <br>
+
+        <table id="Gallery"> 
+
+            <caption><em>Photo Album</caption></em>
+            <tr>
+                <th>Image</th>
+                <th>Author</th>
+                <th>Alt</th>
+                <th>tags</th>
+                <th>Description</th>
+            </tr>
+
+            <tr>
+                <td data-label="Author Image"> 
+                    <figure>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/Agatha_Christie.png">
+                        <figcaption> Fig.1 - Agatha Christie</figcaption>
+                    </figure>
+                </td>
+                <td data-label="Author Name">Agatha Christie </td>
+                <td data-label="Alt">Image of Agatha Christie</td>
+                <td data-label="Tag">english, successful_write</td>
+                <td data-label="Description"> Agatha Christie, <abbr title="Dame (Commander of the Order) of the British Empire">DBE</abbr> was an English writer who got appointed as the most-translated individual author</td>
+            </tr>
+<!-- Extra images, eventually should only contain images from database
+            <tr> 
+                <td data-label="Author Image"> 
+                    <figure>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2d/Georges_Simenon_%281963%29_without_hat_by_Erling_Mandelmann.jpg">
+                        <figcaption>Fig.2 - Erling Mandelmann</figcaption>
+                    </figure>
+                </td>
+                <td data-label="Author Name">Georges Simenon</td>
+                <td data-label="Alt">Image of Georges Simenon </td>
+                <td data-label="Tag">belgian, novelist</td>
+                <td data-label="Description"> Georges Simenon was a Belgian writer. He was one of the most prolific writers of the 20th century.
+                Simenon wrote over 200 books over the years:
+                <ol>
+                    <li>1923</li>
+                    <li>1924</li>
+                    <li>1925</li>
+                    <li>...</li>
+                    <li>1933</li>
+                </ol>
+                </td>
+            </tr>
+            <tr>
+                <td data-label="Author Image"> 
+                    <figure>
+                        <img src="https://i.guim.co.uk/img/media/bdc6ac3f394d3bc3ad10bd0f962f05ef9aff5604/340_736_4848_2911/master/4848.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=859576637389094a07e9334623c439d0">
+                        <figcaption>Fig.3 - Stephen Edwin King</figcaption>
+                    </figure>
+                </td>
+                <td data-label="Author Name">Stephen Edwin King </td>
+                <td data-label="Alt">Image of Stephen Edwin King </td>
+                <td data-label="Tag"> author, king_of_horror</td>
+                <td data-label="Description"> Stephen Edwin King is an American author who is described as the "King of Horror". He received several awards for his contribution to literature. </td>
+            </tr>
+            <tr>
+                <td data-label="Author Image"> 
+                    <figure>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTipMe_0qc2jfurOvbobrCLT6GFnnSrXnQegq7d-yN-y3pfQoyK-EokUg&s">
+                        <figcaption>Fig.4 - Rober Lawrence Stine</figcaption>
+                    </figure>
+                </td>
+                <td data-label="Author Name">Robert Lawrence Stine  </td>
+                <td data-label="Alt">Image of Robert Lawrence Stine </td>
+                <td data-label="Tag"> american_novelist</td>
+                <td data-label="Description"> Robert Lawrence Stine is an American novelist. He is referred as  the "Stephen King of children's literature" and wrote many horror ficton novels. Many of his works became bestseller lists and he has received several awards.</td>
+            </tr>
+-->
+            <tr>
+                <td>
+                    <form id="form" action="https://wt.ops.labs.vu.nl/api23/1d6a86bc" method="post">
+                        <label for="image">Author Image URL:</label>
+                        <input type="text" id="image" name="image" required>
+
+                        <label for="author">Author</label>
+                        <input type="text" id="author" name="author" required>
+
+                        <label for="alt">Alt</label>
+                        <input type="text" id="alt" name="alt" required>
+
+                        <label for="tags">Tags</label>
+                        <input type="text" id="tags" name="tags" required>
+
+                        <label for="description">Description</label>
+                        <input label="text" id="description" name="description" reqiored>
+
+                        <input id="submit" type="submit" value="Submit" >
+                    </form>
+                </td>
+            </tr>
+
+        </table>
+
+        <p class="a"><strong><em>Learn</strong></em> more about the authors here: <a href="blank">Authors</a></p>
+
+        <br>
+
+        <hr>
+
+        <h2 id="news">News</h2>
+
+        <p> Lorem ipsum dolor sit amet. Qui earum exercitationem non omnis dicta est harum ipsum sed nemo culpa. In minima pariatur ut impedit unde ut dolorum unde quo voluptates quasi rem consequatur unde sit magnam repellendus sed nisi inventore! Sit tempore architecto in rerum molestias ut nihil molestiae et facere maxime qui repellat explicabo?
+
+        Qui temporibus sapiente nam velit ipsam in nisi quasi sed voluptas numquam. Et recusandae eveniet a necessitatibus totam aut doloribus saepe et dolor cupiditate eos vitae provident cum error blanditiis. Sed exercitationem neque qui dolore doloremque est magni nisi sit galisum galisum. Id animi voluptates ea ratione accusamus et ipsam voluptatem ut ipsa Quis id corrupti iste?
+
+        Qui obcaecati possimus aut galisum saepe et sunt atque sit odit cupiditate cum deserunt quia et voluptatum quod ex temporibus tempora. A adipisci nulla et veniam natus id velit laudantium aut quasi modi.</p>
+
+        <hr>
+
+        <h2 id="about">About</h2>
+
+        <!--add a figure with figcaption. If you have any ideas (idea figure lamp) -->
+
+        <p>
+            <dl id="aboutweb">
+                <dt>What does our website do??</dt>
+                <dd>This is web service that contains brief information famous authors in the worlds.</dd>
+                <dd>We gather information from several websites. You can visit this website to see more details on more authors:  <a id="examplelink" href="https://en.wikipedia.org/wiki/List_of_best-selling_fiction_authors">authorssources.com</a></dd>
+                <dt>What can you learn from us?</dt>
+                <dd>You can learn about the authors' details:
+                  <ul class="list">
+                    <li>Career</li>
+                    <li>Works</li>
+                    <li>Personal Information</li>
+                  </ul>
+                </dd>
+            </dl>
+        </p>
+
+        <hr>
+
+        <h2 id="contact">Contact us</h2>
+        <p> Boris de Groot and Ashilla Fryda have made this web page. Report can be seen on the HTML source code.</p>
+
+        <footer>
+            <author>Authors: 
+                Boris & Ashilla
+            </author>
+        </footer>
+    </body>
+
+</html>
+
+<!-- Report 
+    - We tested the responsiveness of the web page by using devtools on chrome. With it, I could open a page where I could slide the screen size to see the web page on different screen.
+    - Main contents that were adjusted are the table and the different section of the content such as news, about. The table changes format and size so that it readable for small devices. 
+    - I tested different browsers by opening the index.html file with different browsers including chrome and internet explorer.
+    - Both browsers offer the same print style, this is tested by pressing the print option provided by the browsers.
+    - Conclusion: both the HTML5 and CSS constructs always work the same in every browsers that we tested.   
+-->
