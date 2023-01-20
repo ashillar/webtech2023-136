@@ -1,3 +1,9 @@
+//-------------------Testing----------------------
+
+console.log("This is the testing area");
+
+
+
 //-------------------------------- Functions -----------------------------------
 //The function should have the link and more data
 function addRow(link, author, alt, tags, description) {
@@ -18,7 +24,7 @@ function addRow(link, author, alt, tags, description) {
     gal.appendChild(aRow);
 }
 
-
+console.log("function addRow has been checked");
 
 //-------------------Posting the data-----------------
 
@@ -34,12 +40,12 @@ form.addEventListener('submit', async function(event) {
 
     countNum += 1;
     
-    // Get the textarea values from the submit button
+    // Get the textarea values from the submit button There's likely a problem in this area here --> cannot find the input[name="img"] or whatev
     let image = document.querySelector('input[name="image"]').value;
     let author = document.querySelector('input[name="author"]').value;
     let alt = document.querySelector('input[name="alt"]').value;
     let tags = document.querySelector('input[name="tags"]').value;
-    let description = document.querySelector('textarea[name="description"]').value;
+    let description = document.querySelector('input[name="description"]').value;
 
     // Validate the data before sending the request
     if (!image) {
@@ -76,11 +82,12 @@ form.addEventListener('submit', async function(event) {
         description: description,
     }
 
+
     // Send the request
     fetch('https://wt.ops.labs.vu.nl/api23/1d6a86bc', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(formData), //Convert it to json for the server
     })
     .then(response => response.text())
     .then(data => {
@@ -90,10 +97,13 @@ form.addEventListener('submit', async function(event) {
     .catch(error => {
         console.error(error);
     });
+
 });
 
 
 
+
+console.log("The post method has been checked");
 
 
 
