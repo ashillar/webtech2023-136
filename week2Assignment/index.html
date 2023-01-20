@@ -30,10 +30,32 @@
         </nav>
 
         <br>
+        <br>
+        <br>
+
 
         <table id="Gallery"> 
 
-            <caption><em>Photo Album</caption></em>
+            <caption><em>
+                <form id="form" action="https://wt.ops.labs.vu.nl/api23/1d6a86bc" method="post">
+                    <label for="image">Author Image URL:</label>
+                    <input type="text" id="image" name="image" required>
+
+                    <label for="author">Author</label>
+                    <input type="text" id="author" name="author" required>
+
+                    <label for="alt">Alt</label>
+                    <input type="text" id="alt" name="alt" required>
+
+                    <label for="tags">Tags</label>
+                    <input type="text" id="tags" name="tags" required>
+
+                    <label for="description">Description</label>
+                    <input label="text" id="description" name="description" required>
+
+                    <input id="submit" type="submit" value="Submit" >
+                </form>
+            </caption></em>
             <tr>
                 <th>Image</th>
                 <th>Author</th>
@@ -54,6 +76,7 @@
                 <td data-label="Tag">english, successful_write</td>
                 <td data-label="Description"> Agatha Christie, <abbr title="Dame (Commander of the Order) of the British Empire">DBE</abbr> was an English writer who got appointed as the most-translated individual author</td>
             </tr>
+        </table>
 <!-- Extra images, eventually should only contain images from database
             <tr> 
                 <td data-label="Author Image"> 
@@ -101,30 +124,7 @@
                 <td data-label="Description"> Robert Lawrence Stine is an American novelist. He is referred as  the "Stephen King of children's literature" and wrote many horror ficton novels. Many of his works became bestseller lists and he has received several awards.</td>
             </tr>
 -->
-            <tr>
-                <td>
-                    <form id="form" action="https://wt.ops.labs.vu.nl/api23/1d6a86bc" method="post">
-                        <label for="image">Author Image URL:</label>
-                        <input type="text" id="image" name="image" required>
-
-                        <label for="author">Author</label>
-                        <input type="text" id="author" name="author" required>
-
-                        <label for="alt">Alt</label>
-                        <input type="text" id="alt" name="alt" required>
-
-                        <label for="tags">Tags</label>
-                        <input type="text" id="tags" name="tags" required>
-
-                        <label for="description">Description</label>
-                        <input label="text" id="description" name="description" reqiored>
-
-                        <input id="submit" type="submit" value="Submit" >
-                    </form>
-                </td>
-            </tr>
-
-        </table>
+        
 
         <p class="a"><strong><em>Learn</strong></em> more about the authors here: <a href="blank">Authors</a></p>
 
