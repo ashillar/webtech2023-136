@@ -12,13 +12,23 @@ function addRow(link, author, alt, tags, description) {
 
     let tableDataOne = document.createElement("td");
     tableDataOne.innerHTML = "<img src='" + link + "'>";
-
     aRow.appendChild(tableDataOne);
 
     let tableDataTwo = document.createElement("td");
-    tableDataTwo.innerHTML = "<p>Author: " + author + "</p>" + "<p>Alt: " + alt + "</p>" + "<p>Tags: " + tags + "</p>" + "<p>Description: " + description + "</p>";
-
+    tableDataTwo.innerHTML = author;
     aRow.appendChild(tableDataTwo);
+
+    let tableDataThree = document.createElement("td");
+    tableDataThree.innerHTML = alt;
+    aRow.appendChild(tableDataThree);
+
+    let tableDataFour = document.createElement("td");
+    tableDataFour.innerHTML = tags;
+    aRow.appendChild(tableDataFour);
+
+    let tableDataFive = document.createElement("td");
+    tableDataFive.innerHTML = description;
+    aRow.appendChild(tableDataFive);
 
     let gal = document.getElementById("Gallery");
     gal.appendChild(aRow);
@@ -46,6 +56,14 @@ form.addEventListener('submit', async function(event) {
     let alt = document.querySelector('input[name="alt"]').value;
     let tags = document.querySelector('input[name="tags"]').value;
     let description = document.querySelector('input[name="description"]').value;
+
+    console.log("IMAGE IS " + image);
+
+    console.log("Image" + countNum + " is: " + image + "<<>>");
+    console.log("Author" + countNum + " is: " + author + "<<>>");
+    console.log("Alt" + countNum + " is: " + alt + "<<>>");
+    console.log("tags" + countNum + " is: " + tags + "<<>>");
+    console.log("Description" + countNum + " is: " + description);
 
     // Validate the data before sending the request
     if (!image) {
@@ -100,10 +118,6 @@ form.addEventListener('submit', async function(event) {
 
 });
 
-
-
-
-console.log("The post method has been checked");
 
 
 
