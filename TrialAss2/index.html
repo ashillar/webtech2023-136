@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head> 
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js" async></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Photo Album page</title>
+    </head>
+
+    <body> 
+        
+        <h1 id="home"><u><em>Photo Album</em></u></h1>
+
+        <!--inline nav block -->
+
+        <br>
+        <br>
+        <br>
+
+        <nav>
+            <ul>
+              <li class="nav"><a href="#home">Home</a></li>
+              <li class="nav"><a href="#news">News</a></li>
+              <li class="nav"><a href="#contact">Contact Us</a></li>
+              <li class="nav"><a href="#about">About</a></li>
+            </ul>
+        </nav>
+
+        <br>
+        <br>
+        <br>
+
+        <div class="container">
+            <section id="main_table">
+                <form action="https://wt.ops.labs.vu.nl/api23/54db8963" method="post" id="model-form"></form>
+                <form action="https://wt.ops.labs.vu.nl/api23/54db8963/reset" method="get" id="db-reset"></form>
+                <div class="models-wrapper">
+                    <table class="models" >
+                        <thead>
+                            <tr class="bodyRows">
+                                <th>author</th>
+                                <th>alt</th>
+                                <th><abbr title="Operating System">tags</abbr></th>
+                                <th>description</th>
+                                <th>Image</th>
+                            </tr>
+                        </thead>
+                          <tbody id="data-output" class="bodyt">
+                            <!-- Prodcuts from javascript file in here. -->
+                         </tbody>
+                        <tfoot>
+                            <tr>
+                              <td><input form="model-form" required type="text" id="image" name="image"
+                                placeholder="Image URI" class="inputForm"></td>
+                                <td><input form="model-form" required type="text" id="author" name="author"
+                                        placeholder="author" class="inputForm"></td>
+                                <td><input form="model-form" required type="text" id="alt" name="alt"
+                                        placeholder="alt" class="inputForm"></td>
+                                <td><input form="model-form" required type="text" id="tags" name="tags" placeholder="tags"
+                                        class="inputForm"></td>
+                                <td><input form="model-form" required type="text" id="description" name="description"
+                                        placeholder="description" class="inputForm">
+                                </td>
+                                
+                            </tr>
+                            <tr class="submit-row">
+                                <td colspan="5">
+                                    <input type="submit" value="Submit a New Model" form="model-form"
+                                        class="model-submit" />
+                                    <input type="submit" value="Reset Database" form="db-reset" class="model-submit" />
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </section>
+            
+        <p class="a"><strong><em>Learn</strong></em> more about the authors here: <a href="blank">Authors</a></p>
+
+        <br>
+
+        <hr>
+
+        <h2 id="news">News</h2>
+
+        <p> Lorem ipsum dolor sit amet. Qui earum exercitationem non omnis dicta est harum ipsum sed nemo culpa. In minima pariatur ut impedit unde ut dolorum unde quo voluptates quasi rem consequatur unde sit magnam repellendus sed nisi inventore! Sit tempore architecto in rerum molestias ut nihil molestiae et facere maxime qui repellat explicabo?
+
+        Qui temporibus sapiente nam velit ipsam in nisi quasi sed voluptas numquam. Et recusandae eveniet a necessitatibus totam aut doloribus saepe et dolor cupiditate eos vitae provident cum error blanditiis. Sed exercitationem neque qui dolore doloremque est magni nisi sit galisum galisum. Id animi voluptates ea ratione accusamus et ipsam voluptatem ut ipsa Quis id corrupti iste?
+
+        Qui obcaecati possimus aut galisum saepe et sunt atque sit odit cupiditate cum deserunt quia et voluptatum quod ex temporibus tempora. A adipisci nulla et veniam natus id velit laudantium aut quasi modi.</p>
+
+        <hr>
+
+        <h2 id="about">About</h2>
+
+        <!--add a figure with figcaption. If you have any ideas (idea figure lamp) -->
+
+        <p>
+            <dl id="aboutweb">
+                <dt>What does our website do??</dt>
+                <dd>This is web service that contains brief information famous authors in the worlds.</dd>
+                <dd>We gather information from several websites. You can visit this website to see more details on more authors:  <a id="examplelink" href="https://en.wikipedia.org/wiki/List_of_best-selling_fiction_authors">authorssources.com</a></dd>
+                <dt>What can you learn from us?</dt>
+                <dd>You can learn about the authors' details:
+                  <ul class="list">
+                    <li>Career</li>
+                    <li>Works</li>
+                    <li>Personal Information</li>
+                  </ul>
+                </dd>
+            </dl>
+        </p>
+
+        <hr>
+
+        <h2 id="contact">Contact us</h2>
+        <p> Boris de Groot and Ashilla Fryda have made this web page. Report can be seen on the HTML source code.</p>
+
+        <footer>
+            <author>Authors: 
+                Boris & Ashilla
+            </author>
+        </footer>
+    </body>
+
+</html>
+
+<!-- Report 
+    - We tested the responsiveness of the web page by using devtools on chrome. With it, I could open a page where I could slide the screen size to see the web page on different screen.
+    - Main contents that were adjusted are the table and the different section of the content such as news, about. The table changes format and size so that it readable for small devices. 
+    - I tested different browsers by opening the index.html file with different browsers including chrome and internet explorer.
+    - Both browsers offer the same print style, this is tested by pressing the print option provided by the browsers.
+    - Conclusion: both the HTML5 and CSS constructs always work the same in every browsers that we tested.   
+-->
