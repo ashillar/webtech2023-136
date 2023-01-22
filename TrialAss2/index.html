@@ -3,8 +3,12 @@
 <html lang="en">
 
     <head> 
-        <link rel="stylesheet" href="style.css">
         <script src="script.js" async></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="style.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Photo Album page</title>
@@ -26,12 +30,66 @@
               <li class="nav"><a href="#news">News</a></li>
               <li class="nav"><a href="#contact">Contact Us</a></li>
               <li class="nav"><a href="#about">About</a></li>
+              <li class="nav"><a href="#"> <button id="modalbtn" type="button" data-toggle="modal" data-target="#myModal">Modal</button></a></li>
+
             </ul>
         </nav>
 
         <br>
         <br>
         <br>
+
+        <!-- Trigger/Open The Modal -->
+        <div class="container">  
+    <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+      
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Add data to the table:</h4>
+          </div>
+          <div class="modal-body">
+            <form action="https://wt.ops.labs.vu.nl/api23/54db8963" method="post" id="model-form"></form>
+            <label for="image">Author image URL: </label>
+            <input form="model-form"  type="text" id="image" name="image"
+                    placeholder="Image URI" class="inputForm">
+            <label for="author">Author:</label>
+            <input form="model-form"  type="text" id="author" name="author"
+                            placeholder="author" class="inputForm">
+            <label for="alt">Alt:</label>
+            <input form="model-form"  type="text" id="alt" name="alt"
+                            placeholder="alt" class="inputForm">
+            <label for="Tags">Tags:</label> 
+            <input form="model-form"  type="text" id="tags" name="tags" placeholder="tags"
+                            class="inputForm">
+            <label for="description">Description:</label>
+
+            <input form="model-form"  type="text" id="description" name="description"
+            placeholder="description" class="inputForm">
+            <input type="submit" value="Submit" form="model-form" class="model-submit" />
+            </form>
+            </div>
+
+            </div>
+                    
+            </div>
+            </div>
+                
+            </div>
+
+    <!-- End Modal-->
+
+    <!--Filter Gallery-->
+    <div
+    class="custom-div author-box-container"
+    id="authorBoxContainer"
+    ></div>
+    <!-- End Filter Gallery-->
+
+
 
         <div class="container">
             <section id="main_table">
@@ -41,11 +99,11 @@
                     <table class="models" >
                         <thead>
                             <tr class="bodyRows">
-                                <th>author</th>
-                                <th>alt</th>
-                                <th><abbr title="Operating System">tags</abbr></th>
-                                <th>description</th>
                                 <th>Image</th>
+                                <th>Author</th>
+                                <th>Tags</th>
+                                <th>Alt</th>
+                                <th>Description</th>
                             </tr>
                         </thead>
                           <tbody id="data-output" class="bodyt">
@@ -53,22 +111,22 @@
                          </tbody>
                         <tfoot>
                             <tr>
-                              <td><input form="model-form" required type="text" id="image" name="image"
+                              <td><input form="model-form"  type="text" id="image" name="image"
                                 placeholder="Image URI" class="inputForm"></td>
-                                <td><input form="model-form" required type="text" id="author" name="author"
+                                <td><input form="model-form"  type="text" id="author" name="author"
                                         placeholder="author" class="inputForm"></td>
-                                <td><input form="model-form" required type="text" id="alt" name="alt"
+                                <td><input form="model-form"  type="text" id="alt" name="alt"
                                         placeholder="alt" class="inputForm"></td>
-                                <td><input form="model-form" required type="text" id="tags" name="tags" placeholder="tags"
+                                <td><input form="model-form"  type="text" id="tags" name="tags" placeholder="tags"
                                         class="inputForm"></td>
-                                <td><input form="model-form" required type="text" id="description" name="description"
+                                <td><input form="model-form"  type="text" id="description" name="description"
                                         placeholder="description" class="inputForm">
                                 </td>
                                 
                             </tr>
                             <tr class="submit-row">
                                 <td colspan="5">
-                                    <input type="submit" value="Submit a New Model" form="model-form"
+                                    <input type="submit" value="Submit" form="model-form"
                                         class="model-submit" />
                                     <input type="submit" value="Reset Database" form="db-reset" class="model-submit" />
                                 </td>

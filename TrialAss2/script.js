@@ -64,3 +64,4 @@ $('#db-reset').submit(function (e) {
       getModels();
   });
 });
+
