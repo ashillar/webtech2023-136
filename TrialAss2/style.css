@@ -72,6 +72,10 @@ ul.list {
 	list-style-image: none;
 }
 
+#label {
+	color: white;
+	font-weight: bolder;
+}
 #aboutweb {
     font-family: "Allerta Stencil", sans-serif;
     font-size: 18px;

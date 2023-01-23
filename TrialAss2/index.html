@@ -31,7 +31,6 @@
               <li class="nav"><a href="#contact">Contact Us</a></li>
               <li class="nav"><a href="#about">About</a></li>
               <li class="nav"><a href="#"> <button id="modalbtn" type="button" data-toggle="modal" data-target="#myModal">Modal</button></a></li>
-
             </ul>
         </nav>
 
@@ -81,22 +80,27 @@
             </div>
 
     <!-- End Modal-->
+            
 
-    <!--Filter Gallery-->
-    <div
-    class="custom-div author-box-container"
-    id="authorBoxContainer"
-    ></div>
-    <!-- End Filter Gallery-->
+    <div class="container">
+    <!-- Search-->
+    <label id="label" for="myInput"> Search for author name: </label>
+    <input type="text" id="myInput" onkeyup='tableSearch()' placeholder="search for name..">
 
+    <!-- end Search-->
 
+        <!--Filter Gallery-->
 
-        <div class="container">
+        <!-- End Filter Gallery-->
+        
+
             <section id="main_table">
                 <form action="https://wt.ops.labs.vu.nl/api23/54db8963" method="post" id="model-form"></form>
                 <form action="https://wt.ops.labs.vu.nl/api23/54db8963/reset" method="get" id="db-reset"></form>
                 <div class="models-wrapper">
                     <table class="models" >
+                        <caption> <em>Photo Gallery</em></caption>  
+
                         <thead>
                             <tr class="bodyRows">
                                 <th>Image</th>
