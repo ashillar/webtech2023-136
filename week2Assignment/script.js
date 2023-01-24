@@ -1,19 +1,18 @@
-// Fetch model table data on page load
-// Improvement for Guideline 1.1 are added for alt Image
-
 let authorCount = 0;
+let lastClickedAuthor = "";
 
+// Fetch Data and display
 fetch("https://wt.ops.labs.vu.nl/api23/54db8963")
   .then(function (response) {
     return response.json();
   })
   .then(function (lists) {
-    let placeholder = document.querySelector("#data-output");
+    let placeholder = document.querySelector("#showData");
     let out = "";
     for (let list of lists) {
       out += `
-         <tr> 
-            <td> <img alt='${list.alt}' src='${list.image}'> </td> 
+         <tr>
+            <td> <img src='${list.image}'> </td>
             <td> <button class='author-button' data-author='${list.author}'> ${list.author} </button> </td>
             <td>${list.alt}</td>
             <td>${list.tags}</td>
@@ -23,33 +22,30 @@ fetch("https://wt.ops.labs.vu.nl/api23/54db8963")
     }
     placeholder.innerHTML = out;
     addEventListeners();
-    tableSearch();
+    searchBox();
   })
   .catch(function (error) {
     console.log("Error: " + error);
   });
 
-
-// Submit new model, get it and prevent following form link
-// Improvement for Guideline 1.1 are added for alt Image
-
-$("#model-form").submit(function (e) {
+// New data entry from submit button
+$("#authorData").submit(function (e) {
   const tableBody = $(".models").find("tbody");
   e.preventDefault();
   $.ajax({
-    url: "https://wt.ops.labs.vu.nl/api23/54db8963",
+    url: "https://wt.ops.labs.vu.nl/api23/54db8963", //the correct URL
     method: "POST",
-    data: $("#model-form").serialize(),
+    data: $("#authorData").serialize(),
   })
-    .done(function (data) {
+    .done(function (response) {
       $.ajax({
-        url: data.URI,
+        url: response.URL, // use the response data
         method: "GET",
       })
         .done(function (data) {
           tableBody.append(`
               <tr class='bodyt'>
-                  <td><img alt='${data.alt}' src='${data.image}' class='phone-img'></td>
+                  <td><img alt='${data.author} ${data.alt}' src='${data.image}' class='phone-img'></td>
                   <td>
                     <button class='author-button' data-author='${data.author}'>
                       ${data.author}
@@ -60,7 +56,6 @@ $("#model-form").submit(function (e) {
                   <td>${data.description}</td>
               </tr>
           `);
-
           addEventListeners();
         })
         .done(function () {
@@ -69,7 +64,8 @@ $("#model-form").submit(function (e) {
     });
 });
 
-$("#db-reset").submit(function (e) {
+// Reset data to the original state
+$("#resetBtn").submit(function (e) {
   const tableBody = $(".models").find("tbody");
   e.preventDefault();
   $.ajax({
@@ -78,21 +74,35 @@ $("#db-reset").submit(function (e) {
   }).done(function () {
     tableBody.empty();
     getModels();
-    ddEventListeners();
+    addEventListeners();
   });
 });
 
+// Filter table from author's name button
 function addEventListeners() {
   document.querySelectorAll(".author-button").forEach(function (btn) {
     btn.addEventListener("click", function () {
       let activeAuthor = this.dataset.author;
-      hideOthers(activeAuthor);
+      if (activeAuthor === lastClickedAuthor) {
+        showAllRows();
+        lastClickedAuthor = "";
+      } else {
+        hideOthers(activeAuthor);
+        lastClickedAuthor = activeAuthor;
+      }
     });
   });
 }
 
+function showAllRows() {
+  let tableRows = document.querySelectorAll("#showData tr");
+  for (let i = 0; i < tableRows.length; i++) {
+    tableRows[i].style.display = "";
+  }
+}
+
 function hideOthers(activeAuthor) {
-  let tableRows = document.querySelectorAll("#data-output tr");
+  let tableRows = document.querySelectorAll("table tbody tr");
   for (let i = 0; i < tableRows.length; i++) {
     let authorButton = tableRows[i].querySelector(".author-button");
     if (authorButton && authorButton.dataset.author !== activeAuthor) {
@@ -103,11 +113,12 @@ function hideOthers(activeAuthor) {
   }
 }
 
-function tableSearch() {
+// Enter author name from the search box and filter the table
+function searchBox() {
   let input, filter, table, tr, td, txtValue;
-  input = document.getElementById("myInput");
+  input = document.getElementById("newEntry");
   filter = input.value.toUpperCase();
-  table = document.getElementById("data-output");
+  table = document.getElementById("showData");
   tr = table.getElementsByTagName("tr");
 
   for (let i = 0; i < tr.length; i++) {
@@ -122,12 +133,6 @@ function tableSearch() {
     }
   }
 }
-
-//Add event listeners after the table has been populated with data
-let input = document.getElementById("myInput");
-input.addEventListener("keyup", function(){
-tableSearch();
-});
 
 
 

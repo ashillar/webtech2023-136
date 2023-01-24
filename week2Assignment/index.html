@@ -7,16 +7,16 @@ https://www.w3schools.com/bootstrap/bootstrap_modal.asp
 
     <head> 
         <script src="script.js" async></script>
-<!-- from sources -->
+<!-- Start from sources -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<!-- from sources -->
+<!-- End from sources -->
 
         <link rel="stylesheet" href="style.css">
 
-<!-- from sources -->
+<!-- Start from sources -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<!-- from sources -->
+<!-- End from sources -->
 
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -49,59 +49,54 @@ https://www.w3schools.com/bootstrap/bootstrap_modal.asp
 
         <!-- Trigger/Open The Modal -->
         <div class="container">  
-    <!-- Modal -->
+        <!-- Modal -->
         <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">
-      
         <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <h4 class="modal-title">Add data to the table:</h4>
           </div>
-          <div class="modal-body">
-            <form action="https://wt.ops.labs.vu.nl/api23/54db8963" method="post" id="model-form"></form>
-            <label for="image">Author image URL: </label>
-            <input form="model-form"  type="text" id="image" name="image"
-                    placeholder="Image URI" class="inputForm">
-            <label for="author">Author:</label>
-            <input form="model-form"  type="text" id="author" name="author"
-                            placeholder="author" class="inputForm">
-            <label for="alt">Alt:</label>
-            <input form="model-form"  type="text" id="alt" name="alt"
-                            placeholder="alt" class="inputForm">
-            <label for="Tags">Tags:</label> 
-            <input form="model-form"  type="text" id="tags" name="tags" placeholder="tags"
-                            class="inputForm">
-            <label for="description">Description:</label>
-
-            <input form="model-form"  type="text" id="description" name="description"
-            placeholder="description" class="inputForm">
-            <input type="submit" value="Submit" form="model-form" class="model-submit" />
-            </form>
-            </div>
-
-            </div>
-                    
-            </div>
-            </div>
-                
-            </div>
+            <div class="modal-body">
+                <form action="https://wt.ops.labs.vu.nl/api23/54db8963" method="post" id="authorData"></form>
+                <label for="image">Author image URL: </label>
+                <input form="authorData"  type="text" id="image" name="image"
+                        placeholder="Image URL" class="inputForm">
+                <label for="author">Author:</label>
+                <input form="authorData"  type="text" id="author" name="author"
+                                placeholder="author" class="inputForm">
+                <label for="alt">Alt:</label>
+                <input form="authorData"  type="text" id="alt" name="alt"
+                                placeholder="alt" class="inputForm">
+                <label for="Tags">Tags:</label> 
+                <input form="authorData"  type="text" id="tags" name="tags" placeholder="tags"
+                                class="inputForm">
+                <label for="description">Description:</label>
+                <input form="authorData"  type="text" id="description" name="description"
+                placeholder="description" class="inputForm">
+                <input type="submit" value="Submit" form="authorData" class="model-submit" />
+                </form>
+                </div>
+            </div>     
+        </div>
+        </div>
+        </div>
 
     <!-- End Modal-->
             
     <div class="container">
     <!-- Search-->
-    <label id="label" for="myInput"> Search for author name: </label>
-    <input type="text" id="myInput" onkeyup='tableSearch()' placeholder="search for name..">
+    <label id="label" for="newEntry"> Search for author name: </label>
+    <input type="text" id="newEntry" onkeyup='searchBox()' placeholder="search for name..">
     <!-- end Search-->
+    <!-- Author Table -->
             <section id="main_table">
-                <form action="https://wt.ops.labs.vu.nl/api23/54db8963" method="post" id="model-form"></form>
-                <form action="https://wt.ops.labs.vu.nl/api23/54db8963/reset" method="get" id="db-reset"></form>
+                <form action="https://wt.ops.labs.vu.nl/api23/54db8963" method="post" id="authorData"></form>
+                <form action="https://wt.ops.labs.vu.nl/api23/54db8963/reset" method="get" id="resetBtn"></form>
                 <div class="models-wrapper">
                     <table class="models" >
-                        <caption> <em>Photo Gallery</em></caption>  
-
+                        <caption> <em>Photo Album</em></caption>  
                         <thead>
                             <tr class="bodyRows">
                                 <th>Image</th>
@@ -111,52 +106,52 @@ https://www.w3schools.com/bootstrap/bootstrap_modal.asp
                                 <th>Description</th>
                             </tr>
                         </thead>
-                          <tbody id="data-output" class="bodyt">
+                        <tbody id="showData" class="bodyt">
                             <!-- Prodcuts from javascript file in here. -->
-                         </tbody>
+                        </tbody>
                         <tfoot>
                             <tr>
-                              <td><input form="model-form"  type="text" id="image" name="image"
-                                placeholder="Image URI" class="inputForm"></td>
-                                <td><input form="model-form"  type="text" id="author" name="author"
+                              <td><input form="authorData"  type="text" id="image" name="image"
+                                placeholder="Image URL" class="inputForm"></td>
+                                <td><input form="authorData"  type="text" id="author" name="author"
                                         placeholder="author" class="inputForm"></td>
-                                <td><input form="model-form"  type="text" id="alt" name="alt"
+                                <td><input form="authorData"  type="text" id="alt" name="alt"
                                         placeholder="alt" class="inputForm"></td>
-                                <td><input form="model-form"  type="text" id="tags" name="tags" placeholder="tags"
+                                <td><input form="authorData"  type="text" id="tags" name="tags" placeholder="tags"
                                         class="inputForm"></td>
-                                <td><input form="model-form"  type="text" id="description" name="description"
+                                <td><input form="authorData"  type="text" id="description" name="description"
                                         placeholder="description" class="inputForm">
-                                </td>
-                                
+                                </td>     
                             </tr>
                             <tr class="submit-row">
                                 <td colspan="5">
-                                    <input type="submit" value="Submit" form="model-form"
+                                    <input type="submit" value="Submit" form="authorData"
                                         class="model-submit" />
-                                    <input type="submit" value="Reset Database" form="db-reset" class="model-submit" />
+                                    <input type="submit" value="Reset Database" form="resetBtn" class="model-submit" />
                                 </td>
                             </tr>
                         </tfoot>
                     </table>
                 </div>
             </section>
-            
-        <p class="a"><strong><em>Learn</strong></em> more about the authors here: <a href="blank">Authors</a></p>
+    <!-- Author Table -->
+
+        <p class="a"><strong><em>Learn</strong></em> more about the authors here: <a id="examplelink" href="blank">Authors</a></p>
 
         <br>
 
         <hr>
 
         <h2 id="report">Report</h2>
-
-        <p>         
+   
         <ul class="list">
             <li>Guideline Improvement
             <ul>
                 <li>Guideline 1.1: We added alt attribute to the images which can be seen in script.js file.</li>
                 <li>Guideline 1.4: We changed the color of the links so it is more visible.</li>
-                <li> ....
-                
+                <li>Guideline 2.4: There are titles that describe parts of the web page. The 'about', 
+                    'modal' and 'report' titles all describe what they are and send you to the intended section for the web page. 
+                    You can also scroll down and at the sections for the news and the other sections, there is also a heading above it saying what it is.
                 </li>
             </ul>
             </li>
@@ -165,13 +160,12 @@ https://www.w3schools.com/bootstrap/bootstrap_modal.asp
                 <li>User are able to search the data of the authors by typing their names from the search box</li>
                 <li>User are able to add data to the table from clicking modal on the navigation bar or clicking submit button at the bottom of the table. However, going back to the html page and reloading the page is needed to update the table.</li>
                 <li>User are able to reset the data on the table and the server by clickling reset database button. However, reloading the page is needed to update the table</li>
-                <li>User are able to filter data on specific author by clickling the button on the author's name</li>
-                
+                <li>User are able to filter data on specific author by clickling the button on the author's name. After the table is filtered, click again to show the original table</li>
         
             </ul>
             </li>
         </ul>
-        </p>
+    
 
         <hr>
 
@@ -199,12 +193,13 @@ https://www.w3schools.com/bootstrap/bootstrap_modal.asp
 
         <h2 id="contact">Contact us</h2>
         <p> Boris de Groot and Ashilla Fryda have made this web page. Report can be seen on the HTML source code.</p>
-
+        <!-- Footer -->
         <footer>
             <author>Authors: 
                 Boris & Ashilla
             </author>
         </footer>
+        <!-- End Footer -->
     </body>
 
 </html>

@@ -89,14 +89,14 @@ ul.list {
 /* Improvement for Guideline 1.4*/
 
 #examplelink:link {
-	color: green;
+	color: lightgreen;
   }
 #examplelink:visited {
-	color: green;
+	color: lightgreen;
 }
   
 #examplelink:hover {
-	color: lightgreen;
+	color: lightblue;
 }
 #examplelink:active {
 	color: red;
@@ -122,14 +122,8 @@ li.nav a:hover {
 .active {
   background-color: #4CAF50;
 }
-li {
-	display: inline;
-}
 
-li.George {
-	display: none;
-	float: none;
-}
+
 
 .bodyRows {
 	font-size: 30px;
@@ -145,17 +139,19 @@ table {
 	border-collapse: collapse;
 }
 
-caption.firstCap {
+caption {
 	font-size: 50px;
 	font-family: Georgia;
+	text-align: center;
+	margin-top: 1vw;
+	margin-bottom: 1vw;
+	margin-right: 20vw;
+	margin-left: 20vw;
+	color: black;
 	border-style: solid;
 	border: 1px;
 	border-color: black;
 	border-spacing: 2px;
-	margin-top: 1vw;
-	margin-bottom: 1vw;
-	margin-right: 40vw;
-	margin-left: 40vw;
 	caption-side: top;
 	background-color: lightblue;
 	border-width: 2px;
