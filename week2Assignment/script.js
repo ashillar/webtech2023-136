@@ -1,123 +1,134 @@
-//-------------------Testing----------------------
+let authorCount = 0;
+let lastClickedAuthor = "";
 
-console.log("This is the testing area");
-
-
-
-//-------------------------------- Functions -----------------------------------
-//The function should have the link and more data
-function addRow(link, author, alt, tags, description) {
-
-    let aRow = document.createElement("tr");
-
-    let tableDataOne = document.createElement("td");
-    tableDataOne.innerHTML = "<img src='" + link + "'>";
-    aRow.appendChild(tableDataOne);
-
-    let tableDataTwo = document.createElement("td");
-    tableDataTwo.innerHTML = author;
-    aRow.appendChild(tableDataTwo);
-
-    let tableDataThree = document.createElement("td");
-    tableDataThree.innerHTML = alt;
-    aRow.appendChild(tableDataThree);
-
-    let tableDataFour = document.createElement("td");
-    tableDataFour.innerHTML = tags;
-    aRow.appendChild(tableDataFour);
-
-    let tableDataFive = document.createElement("td");
-    tableDataFive.innerHTML = description;
-    aRow.appendChild(tableDataFive);
-
-    let gal = document.getElementById("Gallery");
-    gal.appendChild(aRow);
-}
-
-console.log("function addRow has been checked");
-
-//-------------------Posting the data-----------------
-
-let countNum = 0;
-
-//Preventing the page from reloading after the submit button is clicked
-let form = document.getElementById('form');
-
-
-// Add an event listener to the form to handle the submission
-form.addEventListener('submit', async function(event) {
-    event.preventDefault();
-
-    countNum += 1;
-    
-    // Get the textarea values from the submit button There's likely a problem in this area here --> cannot find the input[name="img"] or whatev
-    let image = document.querySelector('input[name="image"]').value;
-    let author = document.querySelector('input[name="author"]').value;
-    let alt = document.querySelector('input[name="alt"]').value;
-    let tags = document.querySelector('input[name="tags"]').value;
-    let description = document.querySelector('input[name="description"]').value;
-
-    console.log("IMAGE IS " + image);
-
-    console.log("Image" + countNum + " is: " + image + "<<>>");
-    console.log("Author" + countNum + " is: " + author + "<<>>");
-    console.log("Alt" + countNum + " is: " + alt + "<<>>");
-    console.log("tags" + countNum + " is: " + tags + "<<>>");
-    console.log("Description" + countNum + " is: " + description);
-
-    // Validate the data before sending the request
-    if (!image) {
-        alert("Image is required");
-        return;
+fetch("https://wt.ops.labs.vu.nl/api23/54db8963")
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (lists) {
+    let placeholder = document.querySelector("#data-output");
+    let out = "";
+    for (let list of lists) {
+      out += `
+         <tr>
+            <td> <img src='${list.image}'> </td>
+            <td> <button class='author-button' data-author='${list.author}'> ${list.author} </button> </td>
+            <td>${list.alt}</td>
+            <td>${list.tags}</td>
+            <td>${list.description}</td>
+         </tr>
+      `;
     }
+    placeholder.innerHTML = out;
+    addEventListeners();
+    tableSearch();
+  })
+  .catch(function (error) {
+    console.log("Error: " + error);
+  });
 
-    if (!author) {
-        alert("Author is required");
-        return;
-    }
-
-    if (!alt) {
-        alert("Alt is required");
-        return;
-    }
-
-    if (!tags) {
-        alert("Tags is required");
-        return;
-    }
-
-    if (!description) {
-        alert("Description is required");
-        return;
-    }
-
-    // Create a JSON object to store the form data
-    var formData = {
-        imageUrl: image,
-        author: author,
-        alt: alt,
-        tags: tags,
-        description: description,
-    }
-
-
-    // Send the request
-    fetch('https://wt.ops.labs.vu.nl/api23/1d6a86bc', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData), //Convert it to json for the server
-    })
-    .then(response => response.text())
-    .then(data => {
-        console.log(data);
-        addRow(image, author, alt, tags, description); 
-    })
-    .catch(error => {
-        console.error(error);
+// Submit new model, get it and prevent following form
+$("#model-form").submit(function (e) {
+  const tableBody = $(".models").find("tbody");
+  e.preventDefault();
+  $.ajax({
+    url: "https://wt.ops.labs.vu.nl/api23/54db8963", //the correct URL
+    method: "POST",
+    data: $("#model-form").serialize(),
+  })
+    .done(function (response) {
+      $.ajax({
+        url: response.URI, // use the response data
+        method: "GET",
+      })
+        .done(function (data) {
+          tableBody.append(`
+              <tr class='bodyt'>
+                  <td><img alt='${data.author} ${data.alt}' src='${data.image}' class='phone-img'></td>
+                  <td>
+                    <button class='author-button' data-author='${data.author}'>
+                      ${data.author}
+                    </button>
+                  </td>
+                  <td>${data.alt}</td>
+                  <td>${data.tags}</td>
+                  <td>${data.description}</td>
+              </tr>
+          `);
+          addEventListeners();
+        })
+        .done(function () {
+          $(".inputForm").val("");
+        });
     });
-
 });
 
+$("#db-reset").submit(function (e) {
+  const tableBody = $(".models").find("tbody");
+  e.preventDefault();
+  $.ajax({
+    url: "https://wt.ops.labs.vu.nl/api23/54db8963/reset",
+    method: "GET",
+  }).done(function () {
+    tableBody.empty();
+    getModels();
+    addEventListeners();
+  });
+});
+
+function addEventListeners() {
+  document.querySelectorAll(".author-button").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      let activeAuthor = this.dataset.author;
+      if (activeAuthor === lastClickedAuthor) {
+        showAllRows();
+        lastClickedAuthor = "";
+      } else {
+        hideOthers(activeAuthor);
+        lastClickedAuthor = activeAuthor;
+      }
+    });
+  });
+}
+
+function showAllRows() {
+  let tableRows = document.querySelectorAll("#data-output tr");
+  for (let i = 0; i < tableRows.length; i++) {
+    tableRows[i].style.display = "";
+  }
+}
+
+function hideOthers(activeAuthor) {
+  let tableRows = document.querySelectorAll("table tbody tr");
+  for (let i = 0; i < tableRows.length; i++) {
+    let authorButton = tableRows[i].querySelector(".author-button");
+    if (authorButton && authorButton.dataset.author !== activeAuthor) {
+      tableRows[i].style.display = "none";
+    } else if (authorButton) {
+      tableRows[i].style.display = "";
+    }
+  }
+}
+
+function tableSearch() {
+  let input, filter, table, tr, td, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("data-output");
+  tr = table.getElementsByTagName("tr");
+
+  for (let i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
 
 
 
