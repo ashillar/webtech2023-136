@@ -10,8 +10,9 @@ fetch("https://wt.ops.labs.vu.nl/api23/54db8963")
     let out = "";
     for (let list of lists) {
       out += `
-         <tr>
-            <td> <img src='${list.image}'> </td>
+         <tr> 
+          // Improvement for Guideline 1.1
+            <td> <img alt='${list.alt}' src='${list.image}'> </td> 
             <td> <button class='author-button' data-author='${list.author}'> ${list.author} </button> </td>
             <td>${list.alt}</td>
             <td>${list.tags}</td>
@@ -45,7 +46,8 @@ $("#model-form").submit(function (e) {
         .done(function (data) {
           tableBody.append(`
               <tr class='bodyt'>
-                  <td><img alt='${data.author} ${data.alt}' src='${data.image}' class='phone-img'></td>
+              // Improvement for Guideline 1.1
+                  <td><img alt='${data.alt}' src='${data.image}' class='phone-img'></td>
                   <td>
                     <button class='author-button' data-author='${data.author}'>
                       ${data.author}

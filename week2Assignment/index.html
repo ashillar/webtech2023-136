@@ -1,14 +1,23 @@
+<!-- Sources -->
+https://www.w3schools.com/bootstrap/bootstrap_modal.asp
+
 <!DOCTYPE html>
 
 <html lang="en">
 
     <head> 
         <script src="script.js" async></script>
+<!-- from sources -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<!-- from sources -->
+
         <link rel="stylesheet" href="style.css">
 
+<!-- from sources -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<!-- from sources -->
+
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Photo Album page</title>
@@ -81,19 +90,11 @@
 
     <!-- End Modal-->
             
-
     <div class="container">
     <!-- Search-->
     <label id="label" for="myInput"> Search for author name: </label>
     <input type="text" id="myInput" onkeyup='tableSearch()' placeholder="search for name..">
-
     <!-- end Search-->
-
-        <!--Filter Gallery-->
-
-        <!-- End Filter Gallery-->
-        
-
             <section id="main_table">
                 <form action="https://wt.ops.labs.vu.nl/api23/54db8963" method="post" id="model-form"></form>
                 <form action="https://wt.ops.labs.vu.nl/api23/54db8963/reset" method="get" id="db-reset"></form>
