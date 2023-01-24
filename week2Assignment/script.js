@@ -1,4 +1,6 @@
 // Fetch model table data on page load
+// Improvement for Guideline 1.1 are added for alt Image
+
 let authorCount = 0;
 
 fetch("https://wt.ops.labs.vu.nl/api23/54db8963")
@@ -11,7 +13,6 @@ fetch("https://wt.ops.labs.vu.nl/api23/54db8963")
     for (let list of lists) {
       out += `
          <tr> 
-          // Improvement for Guideline 1.1
             <td> <img alt='${list.alt}' src='${list.image}'> </td> 
             <td> <button class='author-button' data-author='${list.author}'> ${list.author} </button> </td>
             <td>${list.alt}</td>
@@ -30,6 +31,8 @@ fetch("https://wt.ops.labs.vu.nl/api23/54db8963")
 
 
 // Submit new model, get it and prevent following form link
+// Improvement for Guideline 1.1 are added for alt Image
+
 $("#model-form").submit(function (e) {
   const tableBody = $(".models").find("tbody");
   e.preventDefault();
@@ -46,7 +49,6 @@ $("#model-form").submit(function (e) {
         .done(function (data) {
           tableBody.append(`
               <tr class='bodyt'>
-              // Improvement for Guideline 1.1
                   <td><img alt='${data.alt}' src='${data.image}' class='phone-img'></td>
                   <td>
                     <button class='author-button' data-author='${data.author}'>

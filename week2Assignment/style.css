@@ -43,7 +43,7 @@ h2 {
 	color: white;
 }
 
-p {
+p{
 	color: white;
 	font-size: 130%;
 	font-family: Arial;
@@ -71,6 +71,8 @@ ul.list {
 	list-style-type: circle;
 	list-style-position: inside;
 	list-style-image: none;
+	color: white;
+	font-size: 18px;
 }
 
 #label {
@@ -84,16 +86,17 @@ ul.list {
 }
 
 /* Properties Link pseudo-classes*/
+/* Improvement for Guideline 1.4*/
 
 #examplelink:link {
 	color: green;
   }
 #examplelink:visited {
-	color: blue;
+	color: green;
 }
   
 #examplelink:hover {
-	color: lightblue;
+	color: lightgreen;
 }
 #examplelink:active {
 	color: red;
