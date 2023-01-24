@@ -3,8 +3,12 @@
 <html lang="en">
 
     <head> 
-        <link rel="stylesheet" href="style.css">
         <script src="script.js" async></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="style.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Photo Album page</title>
@@ -26,6 +30,7 @@
               <li class="nav"><a href="#news">News</a></li>
               <li class="nav"><a href="#contact">Contact Us</a></li>
               <li class="nav"><a href="#about">About</a></li>
+              <li class="nav"><a href="#"> <button id="modalbtn" type="button" data-toggle="modal" data-target="#myModal">Modal</button></a></li>
             </ul>
         </nav>
 
@@ -33,99 +38,108 @@
         <br>
         <br>
 
+        <!-- Trigger/Open The Modal -->
+        <div class="container">  
+    <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+      
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Add data to the table:</h4>
+          </div>
+          <div class="modal-body">
+            <form action="https://wt.ops.labs.vu.nl/api23/54db8963" method="post" id="model-form"></form>
+            <label for="image">Author image URL: </label>
+            <input form="model-form"  type="text" id="image" name="image"
+                    placeholder="Image URI" class="inputForm">
+            <label for="author">Author:</label>
+            <input form="model-form"  type="text" id="author" name="author"
+                            placeholder="author" class="inputForm">
+            <label for="alt">Alt:</label>
+            <input form="model-form"  type="text" id="alt" name="alt"
+                            placeholder="alt" class="inputForm">
+            <label for="Tags">Tags:</label> 
+            <input form="model-form"  type="text" id="tags" name="tags" placeholder="tags"
+                            class="inputForm">
+            <label for="description">Description:</label>
 
-        <table id="Gallery"> 
+            <input form="model-form"  type="text" id="description" name="description"
+            placeholder="description" class="inputForm">
+            <input type="submit" value="Submit" form="model-form" class="model-submit" />
+            </form>
+            </div>
 
-            <caption><em>
-                <form id="form" action="https://wt.ops.labs.vu.nl/api23/1d6a86bc" method="post">
-                    <label for="image">Author Image URL:</label>
-                    <input type="text" id="image" name="image" required>
+            </div>
+                    
+            </div>
+            </div>
+                
+            </div>
 
-                    <label for="author">Author</label>
-                    <input type="text" id="author" name="author" required>
+    <!-- End Modal-->
+            
 
-                    <label for="alt">Alt</label>
-                    <input type="text" id="alt" name="alt" required>
+    <div class="container">
+    <!-- Search-->
+    <label id="label" for="myInput"> Search for author name: </label>
+    <input type="text" id="myInput" onkeyup='tableSearch()' placeholder="search for name..">
 
-                    <label for="tags">Tags</label>
-                    <input type="text" id="tags" name="tags" required>
+    <!-- end Search-->
 
-                    <label for="description">Description</label>
-                    <input label="text" id="description" name="description" required>
+        <!--Filter Gallery-->
 
-                    <input id="submit" type="submit" value="Submit" >
-                </form>
-            </caption></em>
-            <tr>
-                <th>Image</th>
-                <th>Author</th>
-                <th>Alt</th>
-                <th>tags</th>
-                <th>Description</th>
-            </tr>
-
-            <tr>
-                <td data-label="Author Image"> 
-                    <figure>
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/Agatha_Christie.png">
-                        <figcaption> Fig.1 - Agatha Christie</figcaption>
-                    </figure>
-                </td>
-                <td data-label="Author Name">Agatha Christie </td>
-                <td data-label="Alt">Image of Agatha Christie</td>
-                <td data-label="Tag">english, successful_write</td>
-                <td data-label="Description"> Agatha Christie, <abbr title="Dame (Commander of the Order) of the British Empire">DBE</abbr> was an English writer who got appointed as the most-translated individual author</td>
-            </tr>
-        </table>
-<!-- Extra images, eventually should only contain images from database
-            <tr> 
-                <td data-label="Author Image"> 
-                    <figure>
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2d/Georges_Simenon_%281963%29_without_hat_by_Erling_Mandelmann.jpg">
-                        <figcaption>Fig.2 - Erling Mandelmann</figcaption>
-                    </figure>
-                </td>
-                <td data-label="Author Name">Georges Simenon</td>
-                <td data-label="Alt">Image of Georges Simenon </td>
-                <td data-label="Tag">belgian, novelist</td>
-                <td data-label="Description"> Georges Simenon was a Belgian writer. He was one of the most prolific writers of the 20th century.
-                Simenon wrote over 200 books over the years:
-                <ol>
-                    <li>1923</li>
-                    <li>1924</li>
-                    <li>1925</li>
-                    <li>...</li>
-                    <li>1933</li>
-                </ol>
-                </td>
-            </tr>
-            <tr>
-                <td data-label="Author Image"> 
-                    <figure>
-                        <img src="https://i.guim.co.uk/img/media/bdc6ac3f394d3bc3ad10bd0f962f05ef9aff5604/340_736_4848_2911/master/4848.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=859576637389094a07e9334623c439d0">
-                        <figcaption>Fig.3 - Stephen Edwin King</figcaption>
-                    </figure>
-                </td>
-                <td data-label="Author Name">Stephen Edwin King </td>
-                <td data-label="Alt">Image of Stephen Edwin King </td>
-                <td data-label="Tag"> author, king_of_horror</td>
-                <td data-label="Description"> Stephen Edwin King is an American author who is described as the "King of Horror". He received several awards for his contribution to literature. </td>
-            </tr>
-            <tr>
-                <td data-label="Author Image"> 
-                    <figure>
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTipMe_0qc2jfurOvbobrCLT6GFnnSrXnQegq7d-yN-y3pfQoyK-EokUg&s">
-                        <figcaption>Fig.4 - Rober Lawrence Stine</figcaption>
-                    </figure>
-                </td>
-                <td data-label="Author Name">Robert Lawrence Stine  </td>
-                <td data-label="Alt">Image of Robert Lawrence Stine </td>
-                <td data-label="Tag"> american_novelist</td>
-                <td data-label="Description"> Robert Lawrence Stine is an American novelist. He is referred as  the "Stephen King of children's literature" and wrote many horror ficton novels. Many of his works became bestseller lists and he has received several awards.</td>
-            </tr>
--->
+        <!-- End Filter Gallery-->
         
 
+            <section id="main_table">
+                <form action="https://wt.ops.labs.vu.nl/api23/54db8963" method="post" id="model-form"></form>
+                <form action="https://wt.ops.labs.vu.nl/api23/54db8963/reset" method="get" id="db-reset"></form>
+                <div class="models-wrapper">
+                    <table class="models" >
+                        <caption> <em>Photo Gallery</em></caption>  
+
+                        <thead>
+                            <tr class="bodyRows">
+                                <th>Image</th>
+                                <th>Author</th>
+                                <th>Tags</th>
+                                <th>Alt</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                          <tbody id="data-output" class="bodyt">
+                            <!-- Prodcuts from javascript file in here. -->
+                         </tbody>
+                        <tfoot>
+                            <tr>
+                              <td><input form="model-form"  type="text" id="image" name="image"
+                                placeholder="Image URI" class="inputForm"></td>
+                                <td><input form="model-form"  type="text" id="author" name="author"
+                                        placeholder="author" class="inputForm"></td>
+                                <td><input form="model-form"  type="text" id="alt" name="alt"
+                                        placeholder="alt" class="inputForm"></td>
+                                <td><input form="model-form"  type="text" id="tags" name="tags" placeholder="tags"
+                                        class="inputForm"></td>
+                                <td><input form="model-form"  type="text" id="description" name="description"
+                                        placeholder="description" class="inputForm">
+                                </td>
+                                
+                            </tr>
+                            <tr class="submit-row">
+                                <td colspan="5">
+                                    <input type="submit" value="Submit" form="model-form"
+                                        class="model-submit" />
+                                    <input type="submit" value="Reset Database" form="db-reset" class="model-submit" />
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </section>
+            
         <p class="a"><strong><em>Learn</strong></em> more about the authors here: <a href="blank">Authors</a></p>
 
         <br>
