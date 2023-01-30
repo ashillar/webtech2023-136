@@ -41,10 +41,9 @@ app.use(express.json());
 
 
 // ###############################################################################
+
 // Routes
-// 
-// TODO: Add your routes here and remove the example routes once you know how
-//       everything works.
+
 // ###############################################################################
 
 //This spits out the data in a format: [{"id":1,"author":"Tim Berners-Lee","alt":"Image of Berners-Lee","tags":"html,http,url,cern,mit","image":"https://upload.wikimedia.org/wikipedia/commons/9/9d/Sir_Tim_Berners-Lee.jpg","description":"The internet and the Web aren't the same thing."},
@@ -61,11 +60,28 @@ app.get("/photos", (req, res) => {
   	});
 });
 
-//TODO: add data for new photo route
+//Retrieve data for a specific photo
+
+app.get("/photos/:id", (req, res) => {
+  const id = req.params.id;
+  const query = `SELECT * FROM gallery WHERE id = ?`;
+  db.get(query, [id], (err, row) => {
+    if (err) {
+      return console.error(err.message);
+    }
+    if (!row) {
+      return res.status(404).send({ error: "Item not found" });
+    }
+    res.status(200).send(row);
+  });
+});
+
+//add data for new photo route
 
 app.post("/photos", (req, res) => {
 	const { author, alt, tags, image, description } = req.body;
-	const query = INSERT INTO gallery (author, alt, tags, image, description) VALUES (?,?,?,?,?);
+	const query = "INSERT INTO gallery (author, alt, tags, image, description) VALUES (?,?,?,?,?)";
+	//const query = INSERT INTO gallery (author, alt, tags, image, description) VALUES (?,?,?,?,?); removed should be the one on above
 	db.run(query, [author, alt, tags, image, description], (err) => {
 		if (err) {
 			return console.error(err.message);
@@ -74,39 +90,33 @@ app.post("/photos", (req, res) => {
 	});
 });
 
-
-
-// This example route responds to http://localhost:3000/hello with an example JSON object.
-// Please test if this works on your own device before you make any changes.
-
-app.get("/hello", function(req, res) {
-    response_body = {'Hello': 'World'} ;
-
-    // This example returns valid JSON in the response, but does not yet set the
-    // associated HTTP response header.  This you should do yourself in your
-    // own routes!
-    res.json(response_body) ;
+//Update route
+//Use of prepared statements(?) to avoid SQL injections
+app.put("/photos/:id", (req, res) => {
+  const { id } = req.params;
+  const { author, alt, tags, image, description } = req.body;
+  const query = `UPDATE gallery 
+                 SET author = ?, alt = ?, tags = ?, image = ?, description = ? 
+                 WHERE id = ?`;
+  db.run(query, [author, alt, tags, image, description, id], (err) => {
+    if (err) {
+      return console.error(err.message);
+    }
+    res.sendStatus(200);
+  });
 });
 
-// This route responds to http://localhost:3000/db-example by selecting some data from the
-// database and return it as JSON object.
-// Please test if this works on your own device before you make any changes.
-app.get('/db-example', function(req, res) {
-    // Example SQL statement to select the name of all products from a specific brand
-	db.all(`SELECT * FROM gallery WHERE author=?`, ['Grace Hopper'], function(err, rows) {
-	
-    	// TODO: add code that checks for errors so you know what went wrong if anything went wrong
-    	// TODO: set the appropriate HTTP response headers and HTTP response codes here.
 
-    	// # Return db response as JSON
-    	return res.json(rows)
-    });
-});
-
-app.post('/post-example', function(req, res) {
-	// This is just to check if there is any data posted in the body of the HTTP request:
-	console.log(req.body);
-	return res.json(req.body);
+//Delete route
+app.delete("/photos/:id", (req, res) => {
+  const { id } = req.params;
+  const query = `DELETE FROM gallery WHERE id = ?`;
+  db.run(query, [id], (err) => {
+    if (err) {
+      return console.error(err.message);
+    }
+    res.sendStatus(200);
+  });
 });
 
 
