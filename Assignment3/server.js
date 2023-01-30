@@ -48,7 +48,7 @@ app.use(express.json());
 // ###############################################################################
 
 //This spits out the data in a format: [{"id":1,"author":"Tim Berners-Lee","alt":"Image of Berners-Lee","tags":"html,http,url,cern,mit","image":"https://upload.wikimedia.org/wikipedia/commons/9/9d/Sir_Tim_Berners-Lee.jpg","description":"The internet and the Web aren't the same thing."},
-//
+//Retrieve all
 app.get("/photos", (req, res) => {
   	db.all("SELECT * from gallery", (err, rows) => {
     	if (err) {
@@ -60,6 +60,21 @@ app.get("/photos", (req, res) => {
 
   	});
 });
+
+//TODO: add data for new photo route
+
+app.post("/photos", (req, res) => {
+	const { author, alt, tags, image, description } = req.body;
+	const query = INSERT INTO gallery (author, alt, tags, image, description) VALUES (?,?,?,?,?);
+	db.run(query, [author, alt, tags, image, description], (err) => {
+		if (err) {
+			return console.error(err.message);
+		}
+		res.sendStatus(201);
+	});
+});
+
+
 
 // This example route responds to http://localhost:3000/hello with an example JSON object.
 // Please test if this works on your own device before you make any changes.
