@@ -1,11 +1,112 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Posting API Documentation</title>
+    <title>API Documentation</title>
 </head>
 <body>
-    <h1>Photo Posting API Documentation</h1>
+    
+
+
+    <!----------- RETRIEVING ALL PHOTOS DOCUMENTATION ---------------->
+
+    <h1>Retrieve Photos API Documentation</h1>
+    <h2>Endpoint</h2>
+    <p>
+        GET /photos
+    </p>
+    <h2>Response</h2>
+    <p>
+        On success, the API will return a 200 status code and an array of photo objects with the following properties:
+    </p>
+    <ul>
+        <li>id (number, required) - unique identifier of the photo</li>
+        <li>author (string, required) - author of the photo</li>
+        <li>alt (string, required) - alternative text of the photo</li>
+        <li>tags (string, optional) - tags associated with the photo</li>
+        <li>image (string, required) - URL of the photo</li>
+        <li>description (string, optional) - description of the photo</li>
+    </ul>
+    <p>
+        On error, the API will return a console error with the error message.
+    </p>
+    <h2>Example</h2>
+    <p>
+        Below is an example of a successful retrieval of all photos:
+    </p>
+    <pre>
+        GET /photos
+        Response:
+        200
+        [
+            {
+                "id": 1,
+                "author": "John Doe",
+                "alt": "A beautiful sunset",
+                "tags": "sunset",
+                "image": "https://example.com/sunset.jpg",
+                "description": "A beautiful sunset over the ocean."
+            },
+            {
+                "id": 2,
+                "author": "Jane Doe",
+                "alt": "A majestic mountain",
+                "tags": "mountain",
+                "image": "https://example.com/mountain.jpg",
+                "description": "A majestic mountain range in the distance."
+            }
+        ]
+    </pre>
+
+    <!----------- RETRIEVING A PHOTO BY ID DOCUMENTATION ---------------->
+
+    <h1>Retrieve a Photo by ID</h1>
+    <p>Use this endpoint to retrieve a specific photo by its ID.</p>
+    <h2>Endpoint URL</h2>
+    <code>/photos/:id</code>
+    <h2>HTTP Method</h2>
+    <code>GET</code>
+    <h2>URL Parameters</h2>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Required</th>
+      </tr>
+      <tr>
+        <td>id</td>
+        <td>The ID of the photo to be retrieved</td>
+        <td>Yes</td>
+      </tr>
+    </table>
+    <h2>Success Response</h2>
+    <p>If the photo is found, the API will return the following:</p>
+    <table>
+      <tr>
+        <th>HTTP Status Code</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>200 OK</td>
+        <td>The photo was successfully retrieved</td>
+      </tr>
+    </table>
+    <h2>Error Response</h2>
+    <p>If the photo is not found, the API will return the following:</p>
+    <table>
+      <tr>
+        <th>HTTP Status Code</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>404 Not Found</td>
+        <td>The photo could not be found</td>
+      </tr>
+    </table>
+
+    <!--------------- POSTING A PHOTO DOCUMENTATION ------------->
+
+    <h1>Posting photo API Documentation</h1>
+
     <h2>Endpoint</h2>
     <p>
         POST /photos
@@ -15,6 +116,7 @@
         The API request must include the following parameters:
     </p>
     <ul>
+        <li>id (string, required)</li>
         <li>author (string, required)</li>
         <li>alt (string, required)</li>
         <li>tags (string, optional)</li>
@@ -35,6 +137,7 @@
     <pre>
         POST /photos
         {
+        "id": "12345",
         "author": "John Doe",
         "alt": "A beautiful sunset",
         "tags": "sunset",
@@ -44,6 +147,77 @@
         Response:
         201
     </pre>
+
+
+    <!----------- UPDATING A PHOTO DOCUMENTATION ---------------->
+
+      <body>
+    <h1>Update a Photo</h1>
+    <p>Use the PUT method to update the data of a photo identified by its id</p>
+    <h2>Request URL</h2>
+    <p><code>/photos/:id</code></p>
+    <h2>Request Body</h2>
+    <p>The request body should contain the following data in JSON format:</p>
+    <ul>
+      <li><strong>author</strong>: the author of the photo (string)</li>
+      <li><strong>alt</strong>: the alternative text for the photo (string)</li>
+      <li><strong>tags</strong>: tags associated with the photo, separated by comma (string)</li>
+      <li><strong>image</strong>: the URL of the image (string)</li>
+      <li><strong>description</strong>: a description of the photo (string)</li>
+    </ul>
+    <h2>Response</h2>
+    <p>On success, the HTTP status code 200 (OK) will be returned.</p>
+    <p>On error, the HTTP status code 500 (Internal Server Error) will be returned.</p>
+    <h2>Example</h2>
+    <p>Here is an example of how to update a photo using cURL:</p>
+    <pre>
+      curl -X PUT \
+      -H "Content-Type: application/json" \
+      -d '{ "id": "3", "author": "Jane Doe", "alt": "A beautiful sunset", "tags": "sunset, nature, orange", "image": "https://example.com/sunset.jpg", "description": "A breathtaking sunset over the ocean" }' \
+      https://api.example.com/photos/123
+    </pre>
+
+    <!----------- DELETING A PHOTO DOCUMENTATION ---------------->
+
+    <h1>Delete Photo Route</h1>
+    <p>This route is used to delete a photo from the database.</p>
+    <h2>URL</h2>
+    <pre>
+      DELETE /photos/:id
+    </pre>
+    <h2>Request Body</h2>
+    <p>No request body required for this route.</p>
+    <h2>Response Body</h2>
+    <p>
+      Upon successful deletion, the response will be an empty JSON object with a status code of 200 OK.
+    </p>
+    <pre>
+      {
+        status: "success",
+        data: {}
+      }
+    </pre>
+    <h2>Error Responses</h2>
+    <p>
+      If the photo with the given ID does not exist, the response will be a JSON object with a status code of 404 Not Found.
+    </p>
+    <pre>
+      {
+        status: "error",
+        message: "Photo not found"
+      }
+    </pre>
+    <p>
+      If there is a server error, the response will be a JSON object with a status code of 500 Internal Server Error.
+    </p>
+    <pre>
+      {
+        status: "error",
+        message: "Internal server error"
+      }
+    </pre>
+    
+
 
 </body>
 </html>
