@@ -1,1 +1,49 @@
 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Posting API Documentation</title>
+</head>
+<body>
+    <h1>Photo Posting API Documentation</h1>
+    <h2>Endpoint</h2>
+    <p>
+        POST /photos
+    </p>
+    <h2>Request Body</h2>
+    <p>
+        The API request must include the following parameters:
+    </p>
+    <ul>
+        <li>author (string, required)</li>
+        <li>alt (string, required)</li>
+        <li>tags (string, optional)</li>
+        <li>image (string, required) - URL of the photo to be posted</li>
+        <li>description (string, optional) - description of the photo</li>
+    </ul>
+    <h2>Response</h2>
+    <p>
+        On success, the API will return a 201 status code.
+    </p>
+    <p>
+        On error, the API will return a console error with the error message.
+    </p>
+    <h2>Example</h2>
+    <p>
+        Below is an example of a successful photo post:
+    </p>
+    <pre>
+        POST /photos
+        {
+        "author": "John Doe",
+        "alt": "A beautiful sunset",
+        "tags": "sunset",
+        "image": "https://example.com/sunset.jpg",
+        "description": "A beautiful sunset over the ocean."
+        }
+        Response:
+        201
+    </pre>
+
+</body>
+</html>
