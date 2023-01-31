@@ -113,7 +113,7 @@ app.delete("/photos/:id", (req, res) => {
   const query = `DELETE FROM gallery WHERE id = ?`;
   db.run(query, [id], (err) => {
     if (err) {
-      return res.status(500).json({ error: err.message });
+      return console.error(err.message);
     }
     res.sendStatus(200);
   });
