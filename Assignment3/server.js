@@ -124,7 +124,7 @@ app.delete("/photos/:id", (req, res) => {
 // This should start the server, after the routes have been defined, at port 3000:
 
 app.listen(3000);
-console.log("Your Web server should be up and running, waiting for requests to come in. Try http://localhost:3000/hello");
+console.log("Your Web server should be up and running, waiting for requests to come in. Try http://localhost:3000/photos");
 
 // ###############################################################################
 // Some helper functions called above
