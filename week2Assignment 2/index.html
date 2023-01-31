@@ -1,0 +1,217 @@
+<!-- Sources -->
+https://www.w3schools.com/bootstrap/bootstrap_modal.asp
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head> 
+        <script src="script.js" async></script>
+<!-- Start from sources -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<!-- End from sources -->
+
+        <link rel="stylesheet" href="style.css">
+
+<!-- Start from sources -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<!-- End from sources -->
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Photo Album page</title>
+    </head>
+
+    <body> 
+        
+        <h1 id="home"><u><em>Photo Album</em></u></h1>
+
+        <!--inline nav block -->
+
+        <br>
+        <br>
+        <br>
+
+        <nav>
+            <ul>
+              <li class="nav"><a href="#home">Home</a></li>
+              <li class="nav"><a href="#report">Report</a></li>
+              <li class="nav"><a href="#contact">Contact Us</a></li>
+              <li class="nav"><a href="#about">About</a></li>
+              <li class="nav"><a href="#"> <button id="modalbtn" type="button" data-toggle="modal" data-target="#myModal">Modal</button></a></li>
+            </ul>
+        </nav>
+
+        <br>
+        <br>
+        <br>
+
+ <!-- Start Modal Idea from Source -->
+
+        <!-- Trigger/Open The Modal -->
+        <div class="container">  
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Add data to the table:</h4>
+          </div>
+            <div class="modal-body">
+                <form action="https://wt.ops.labs.vu.nl/api23/54db8963" method="post" id="authorData"></form>
+                <label for="image">Author image URL: </label>
+                <input form="authorData"  type="text" id="image" name="image"
+                        placeholder="Image URL" class="inputForm">
+                <label for="author">Author:</label>
+                <input form="authorData"  type="text" id="author" name="author"
+                                placeholder="author" class="inputForm">
+                <label for="alt">Alt:</label>
+                <input form="authorData"  type="text" id="alt" name="alt"
+                                placeholder="alt" class="inputForm">
+                <label for="Tags">Tags:</label> 
+                <input form="authorData"  type="text" id="tags" name="tags" placeholder="tags"
+                                class="inputForm">
+                <label for="description">Description:</label>
+                <input form="authorData"  type="text" id="description" name="description"
+                placeholder="description" class="inputForm">
+                <input type="submit" value="Submit" form="authorData" class="model-submit" />
+                </form>
+                </div>
+            </div>     
+        </div>
+        </div>
+        </div>
+
+    <!-- End Modal-->
+ <!-- End Modal Idea from Source -->
+
+            
+    <div class="container">
+    <!-- Search-->
+    <label id="label" for="newEntry"> Search for author name: </label>
+    <input type="text" id="newEntry" onkeyup='searchBox()' placeholder="search for name..">
+    <!-- end Search-->
+    <!-- Author Table -->
+            <section id="main_table">
+                <form action="https://wt.ops.labs.vu.nl/api23/54db8963" method="post" id="authorData"></form>
+                <form action="https://wt.ops.labs.vu.nl/api23/54db8963/reset" method="get" id="resetBtn"></form>
+                <div class="models-wrapper">
+                    <table class="models" >
+                        <caption> <em>Photo Album</em></caption>  
+                        <thead>
+                            <tr class="bodyRows">
+                                <th>Image</th>
+                                <th>Author</th>
+                                <th>Tags</th>
+                                <th>Alt</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody id="showData" class="bodyt">
+                            <!-- Prodcuts from javascript file in here. -->
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                              <td><input form="authorData"  type="text" id="image" name="image"
+                                placeholder="Image URL" class="inputForm"></td>
+                                <td><input form="authorData"  type="text" id="author" name="author"
+                                        placeholder="author" class="inputForm"></td>
+                                <td><input form="authorData"  type="text" id="alt" name="alt"
+                                        placeholder="alt" class="inputForm"></td>
+                                <td><input form="authorData"  type="text" id="tags" name="tags" placeholder="tags"
+                                        class="inputForm"></td>
+                                <td><input form="authorData"  type="text" id="description" name="description"
+                                        placeholder="description" class="inputForm">
+                                </td>     
+                            </tr>
+                            <tr class="submit-row">
+                                <td colspan="5">
+                                    <input type="submit" value="Submit" form="authorData"
+                                        class="model-submit" />
+                                    <input type="submit" value="Reset Database" form="resetBtn" class="model-submit" />
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </section>
+    <!-- Author Table -->
+
+        <p class="a"><strong><em>Learn</strong></em> more about the authors here: <a id="examplelink" href="blank">Authors</a></p>
+
+        <br>
+
+        <hr>
+
+        <h2 id="report">Report</h2>
+   
+        <ul class="list">
+            <li>Guideline Improvement
+            <ul>
+                <li>Guideline 1.1: We added alt attribute to the images which can be seen in script.js file.</li>
+                <li>Guideline 1.4: We changed the color of the links so it is more visible.</li>
+                <li>Guideline 2.4: There are titles that describe parts of the web page. The 'about', 
+                    'modal' and 'report' titles all describe what they are and send you to the intended section for the web page. 
+                    You can also scroll down and at the sections for the news and the other sections, there is also a heading above it saying what it is.
+                </li>
+            </ul>
+            </li>
+            <li>Functionality
+            <ul>
+                <li>User are able to search the data of the authors by typing their names from the search box</li>
+                <li>User are able to add data to the table from clicking modal on the navigation bar or clicking submit button at the bottom of the table. However, going back to the html page and reloading the page is needed to update the table.</li>
+                <li>User are able to reset the data on the table and the server by clickling reset database button. However, reloading the page is needed to update the table</li>
+                <li>User are able to filter data on specific author by clickling the button on the author's name. After the table is filtered, click again to show the original table</li>
+        
+            </ul>
+            </li>
+        </ul>
+    
+
+        <hr>
+
+        <h2 id="about">About</h2>
+
+        <!--add a figure with figcaption. If you have any ideas (idea figure lamp) -->
+
+        <p>
+            <dl id="aboutweb">
+                <dt>What does our website do??</dt>
+                <dd>This is web service that contains brief information famous authors in the worlds.</dd>
+                <dd>We gather information from several websites. You can visit this website to see more details on more authors:  <a id="examplelink" href="https://en.wikipedia.org/wiki/List_of_best-selling_fiction_authors">authorssources.com</a></dd>
+                <dt>What can you learn from us?</dt>
+                <dd>You can learn about the authors' details:
+                  <ul class="list">
+                    <li>Career</li>
+                    <li>Works</li>
+                    <li>Personal Information</li>
+                  </ul>
+                </dd>
+            </dl>
+        </p>
+
+        <hr>
+
+        <h2 id="contact">Contact us</h2>
+        <p> Boris de Groot and Ashilla Fryda have made this web page. Report can be seen on the HTML source code.</p>
+        <!-- Footer -->
+        <footer>
+            <author>Authors: 
+                Boris & Ashilla
+            </author>
+        </footer>
+        <!-- End Footer -->
+    </body>
+
+</html>
+
+<!-- Report 
+    - We tested the responsiveness of the web page by using devtools on chrome. With it, I could open a page where I could slide the screen size to see the web page on different screen.
+    - Main contents that were adjusted are the table and the different section of the content such as report, about. The table changes format and size so that it readable for small devices. 
+    - I tested different browsers by opening the index.html file with different browsers including chrome and internet explorer.
+    - Both browsers offer the same print style, this is tested by pressing the print option provided by the browsers.
+    - Conclusion: both the HTML5 and CSS constructs always work the same in every browsers that we tested.   
+-->
